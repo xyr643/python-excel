@@ -25,10 +25,15 @@ for classname in os.listdir(file):
             # recipes = table.col(0)
             for i in range(nrows):
                 recipename = table.col(0)[i].value
-                # if recipename not in newrecipes:
-                # 向新的Excel中写入数据
-                for j in range(ncols):
-                    worksheet.write(k, j, table.row_values(i)[j])
-                k += 1
-                workbook.save('食谱.xls')
+                # 去除空白行
+                if recipename == None:
+                    continue
+                # 去除重复行
+                if recipename not in recipes:
+                    recipes.append(recipename)
+                    # 向新的Excel中写入数据
+                    for j in range(ncols):
+                        worksheet.write(k, j, table.row_values(i)[j])
+                    k += 1
+                    workbook.save('食谱.xls')
 
