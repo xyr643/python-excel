@@ -25,6 +25,7 @@ for i in range(nrows):
         print(recipe)
     else:
         df.drop(i)
+df.to_excel('食谱.xlsx')
 print(k)
 
 
